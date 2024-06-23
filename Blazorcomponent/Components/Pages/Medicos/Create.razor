@@ -1,0 +1,16 @@
+﻿@page "/medicos/create"
+<EditForm Model="Model">
+    <div class="mb-3">
+        <label for="Nome" class="form-label">Nome</label>
+        <InputText @bind-Value="Model.Nome" class="form-control"></InputText>
+    </div>
+    <div class="mb-3">
+        <label for="CRM" class="form-label">CRM</label>
+        <InputText @bind-Value="Model.CRM" class="form-control"></InputText>
+    </div>
+    <button class="btn btn-primary">Salvar</button>
+</EditForm>
+@code {
+    public medico Model { get; set; } = new medico();
+
+}

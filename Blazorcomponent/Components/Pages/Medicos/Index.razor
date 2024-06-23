@@ -1,0 +1,28 @@
+﻿@page "/medicos"
+@rendermode InteractiveServer
+@inject IMedicoRepository repository
+<h3>Medicos</h3>
+<table class="table table-striped">
+   <thead>
+       <tr>
+           <th>Id</th>
+           <th>Nome</th>
+           <th>CRM</th>
+           <th>#</th>
+       </tr>
+   </thead>
+   <tbody>
+        <MedicoTemplateList medicos="@medicos" DeleteCallBack="Delete"/>
+    </tbody>
+</table>
+@code {
+    public List<medico>? medicos;
+    protected override async Task OnInitializedAsync()
+    {
+        medicos = await repository.GetAllAsync();
+    }
+    public void Delete(medico Medico)
+    {
+        medicos.Remove(Medico);
+    }
+}
